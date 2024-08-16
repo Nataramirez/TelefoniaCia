@@ -6,7 +6,6 @@ import lombok.*;
 
 @Setter
 @Getter
-@ToString
 @AllArgsConstructor
 @Builder
 public class Cliente {
@@ -16,4 +15,16 @@ public class Cliente {
     private String telefono;
     private String correo;
     private ArrayList<Plan> planes;
+
+
+    @Override
+    public String toString() {
+        return
+                "id: '" + id + '\n' +
+                "nombre: '" + nombre + '\n' +
+                "cedula: '" + cedula + '\n' +
+                "telefono: '" + telefono + '\n' +
+                "correo: '" + correo + '\n' +
+                "planes:" + planes;
+    }
 }
