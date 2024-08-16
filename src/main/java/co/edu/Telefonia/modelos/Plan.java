@@ -8,8 +8,11 @@ import lombok.*;
 @Setter
 @Getter
 @ToString
+@AllArgsConstructor
+@Builder
 public class Plan {
     private UUID id;
     private String direccion;
     private ArrayList<Servicio> servicios;
+    private float costoTotal;
 }

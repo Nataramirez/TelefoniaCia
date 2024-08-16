@@ -1,5 +1,8 @@
 package co.edu.Telefonia.modelos;
 
+import co.edu.Telefonia.modelos.enums.TipoServicioInternet;
+import co.edu.Telefonia.modelos.enums.TipoServicioTelefonia;
+import co.edu.Telefonia.modelos.enums.TipoServicioTv;
 import lombok.*;
 import co.edu.Telefonia.servicios.ServiciosEmpresa;
 
@@ -71,6 +74,48 @@ public class TelefoniaCia implements ServiciosEmpresa {
             return null;
         }catch (Exception e){
             throw new Exception("No se puede buscar cliente");
+        }
+    }
+
+    @Override
+    public ServicioTelefonia crearServicio(TipoServicioTelefonia servicioTelefonia) throws Exception {
+        try {
+            return new ServicioTelefonia(
+                    UUID.randomUUID().toString(),
+                    servicioTelefonia.getCategoria(),
+                    servicioTelefonia.getDescripcion(),
+                    servicioTelefonia.getPrecio()
+            );
+        } catch (Exception e){
+            throw new Exception("No se puede crear el servicio telefonia");
+        }
+    }
+
+    @Override
+    public ServicioTv crearServicio(TipoServicioTv servicioTv) throws Exception {
+        try {
+            return new ServicioTv(
+                    UUID.randomUUID().toString(),
+                    servicioTv.getCategoria(),
+                    servicioTv.getDescripcion(),
+                    servicioTv.getPrecio()
+            );
+        } catch (Exception e){
+            throw new Exception("No se puede crear el servicio televisión");
+        }
+    }
+
+    @Override
+    public ServicioInternet crearServicio(TipoServicioInternet servicioInternet) throws Exception {
+        try {
+            return new ServicioInternet(
+                    UUID.randomUUID().toString(),
+                    servicioInternet.getCategoria(),
+                    servicioInternet.getDescripcion(),
+                    servicioInternet.getPrecio()
+            );
+        } catch (Exception e){
+            throw new Exception("No se puede crear el servicio internet");
         }
     }
 }
