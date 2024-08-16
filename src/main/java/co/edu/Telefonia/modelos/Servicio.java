@@ -6,9 +6,10 @@ import java.util.UUID;
 @Setter
 @Getter
 @ToString
+@AllArgsConstructor
 public class Servicio {
-    private UUID id;
-    private Enum<?> nombre;
+    private String id;
+    private String nombre;
     private String descripcion;
     private float precio;
 }
