@@ -92,6 +92,22 @@ public class TelefoniaCia implements ServiciosEmpresa {
     }
 
     @Override
+    public Plan validarDireccion(String direccion) throws Exception {
+        try {
+            for (Cliente cliente : clientes) {
+                for (Plan plan : cliente.getPlanes()) {
+                    if (plan.getDireccion().equals(direccion)) {
+                        throw new Exception("La dirección ya está en uso");
+                    }
+                }
+            }
+            return null;
+        }catch (Exception e){
+            throw new Exception("No se puede encontrar la dirección");
+        }
+    }
+
+    @Override
     public ServicioTv crearServicio(TipoServicioTv servicioTv) throws Exception {
         try {
             return new ServicioTv(
@@ -154,5 +170,22 @@ public class TelefoniaCia implements ServiciosEmpresa {
             return cadena1;
         }
         return cadena2;
+    }
+    public float calcularCostoTotalMensual(Plan plan) throws Exception {
+        float total = 0;
+        try{
+            for (Servicio servicio : plan.getServicios()){
+                total += servicio.getPrecio();
+            }
+            if (plan.getServicios().size() == 2){
+                total *= 0.9F;
+            }
+            else if (plan.getServicios().size() == 3){
+                total *= 0.8F;
+            }
+            return total;
+        }catch (Exception e){
+            throw new Exception("No se puede calcular el costo total mensual");
+        }
     }
 }

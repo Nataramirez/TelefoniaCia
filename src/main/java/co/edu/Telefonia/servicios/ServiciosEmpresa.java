@@ -4,6 +4,8 @@ import co.edu.Telefonia.modelos.*;
 import co.edu.Telefonia.modelos.enums.TipoServicioInternet;
 import co.edu.Telefonia.modelos.enums.TipoServicioTelefonia;
 import co.edu.Telefonia.modelos.enums.TipoServicioTv;
+import co.edu.Telefonia.modelos.Cliente;
+import co.edu.Telefonia.modelos.Plan;
 
 
 public interface ServiciosEmpresa {
@@ -16,4 +18,6 @@ public interface ServiciosEmpresa {
     Boolean validarString(String cadena) throws  Exception;
     //Plan crearPlan(Cliente cliente, String direccion, String correo) throws Exception;
     String escogerPrimeroNoNulo(String cadena1, String cadena2) throws  Exception;
+    Plan validarDireccion(String direccion) throws Exception;
+    float calcularCostoTotalMensual(Plan plan) throws Exception;
 }
