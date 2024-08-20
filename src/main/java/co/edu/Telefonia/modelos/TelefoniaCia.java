@@ -188,6 +188,7 @@ public class TelefoniaCia implements ServiciosEmpresa {
                      .servicios(servicios)
                      .direccion(direccion)
                      .build();
+            nuevoPlan.setCostoTotal(calcularCostoTotalMensual(nuevoPlan));
             cliente.agregarNuevoPlan(nuevoPlan);
             return nuevoPlan;
         }catch (Exception e){
