@@ -16,9 +16,10 @@ public class Cliente {
     private String correo;
     private ArrayList<Plan> planes;
 
-    public void agregarNuevoPlan(Plan nuevoPlan){
+    public void agregarNuevoPlan(Plan nuevoPlan) {
         planes.add(nuevoPlan);
-
+    }
+    
     @Override
     public String toString() {
         return
