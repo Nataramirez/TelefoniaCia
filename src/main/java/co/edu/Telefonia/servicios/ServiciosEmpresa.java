@@ -16,8 +16,8 @@ public interface ServiciosEmpresa {
     ServicioInternet crearServicio(TipoServicioInternet servicioInternet) throws Exception;
     Cliente actuallizarCliente(String nombre, String telefono, String correo, String cedulaActual, String cedulaNueva) throws Exception;
     Boolean validarString(String cadena) throws  Exception;
-    //Plan crearPlan(Cliente cliente, String direccion, String correo) throws Exception;
     String escogerPrimeroNoNulo(String cadena1, String cadena2) throws  Exception;
     Plan validarDireccion(String direccion) throws Exception;
     float calcularCostoTotalMensual(Plan plan) throws Exception;
+    Plan crearPlan(String cedulaCliente, String direccion, TipoServicioTelefonia servicioTelefono, TipoServicioTv servicioTv, TipoServicioInternet servicioInternet) throws Exception;
 }

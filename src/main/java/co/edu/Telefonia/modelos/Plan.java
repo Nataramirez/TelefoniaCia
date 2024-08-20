@@ -1,5 +1,6 @@
 package co.edu.Telefonia.modelos;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -11,8 +12,9 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class Plan {
-    private UUID id;
+    private String id;
     private String direccion;
+    private LocalDate fechaCreacion;
     private ArrayList<Servicio> servicios;
     private float costoTotal;
 }

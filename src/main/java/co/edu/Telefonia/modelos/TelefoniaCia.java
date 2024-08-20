@@ -6,6 +6,7 @@ import co.edu.Telefonia.modelos.enums.TipoServicioTv;
 import lombok.*;
 import co.edu.Telefonia.servicios.ServiciosEmpresa;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -92,22 +93,6 @@ public class TelefoniaCia implements ServiciosEmpresa {
     }
 
     @Override
-    public Plan validarDireccion(String direccion) throws Exception {
-        try {
-            for (Cliente cliente : clientes) {
-                for (Plan plan : cliente.getPlanes()) {
-                    if (plan.getDireccion().equals(direccion)) {
-                        throw new Exception("La dirección ya está en uso");
-                    }
-                }
-            }
-            return null;
-        }catch (Exception e){
-            throw new Exception("No se puede encontrar la dirección");
-        }
-    }
-
-    @Override
     public ServicioTv crearServicio(TipoServicioTv servicioTv) throws Exception {
         try {
             return new ServicioTv(
@@ -186,6 +171,63 @@ public class TelefoniaCia implements ServiciosEmpresa {
             return total;
         }catch (Exception e){
             throw new Exception("No se puede calcular el costo total mensual");
+        }
+    }
+
+    @Override
+    public Plan validarDireccion(String direccion) throws Exception {
+        try {
+            for (Cliente cliente : clientes) {
+                for (Plan plan : cliente.getPlanes()) {
+                    if (plan.getDireccion().equals(direccion)) {
+                        throw new Exception("La dirección ya está en uso");
+                    }
+                }
+            }
+            return null;
+        }catch (Exception e){
+            throw new Exception("No se puede encontrar la dirección");
+        }
+    }
+
+    @Override
+    public Plan crearPlan(String cedulaCliente, String direccion, TipoServicioTelefonia servicioTelefono, TipoServicioTv servicioTv, TipoServicioInternet servicioInternet) throws Exception {
+        Plan nuevoPlan;
+        ArrayList<Servicio> servicios = new ArrayList<>();
+        try {
+            Cliente cliente = buscarCliente(cedulaCliente);
+            if(cliente == null){
+                throw new Exception("El cliente no existe");
+            }
+
+            if(validarDireccion(direccion) != null){
+                throw new Exception("El plan ya existe con la dirección ingresada");
+            }
+
+            if(servicioTelefono != null){
+                ServicioTelefonia telefono = crearServicio(servicioTelefono);
+                servicios.add(telefono);
+            }
+            if(servicioTv != null){
+                ServicioTv television = crearServicio(servicioTv);
+                servicios.add(television);
+            }
+            if(servicioInternet != null){
+                ServicioInternet internet = crearServicio(servicioInternet);
+                servicios.add(internet);
+            }
+
+             nuevoPlan = Plan.builder()
+                     .id(UUID.randomUUID().toString())
+                     .fechaCreacion(LocalDate.now())
+                     .servicios(servicios)
+                     .direccion(direccion)
+                     .build();
+            nuevoPlan.setCostoTotal(calcularCostoTotalMensual(nuevoPlan));
+            cliente.agregarNuevoPlan(nuevoPlan);
+            return nuevoPlan;
+        }catch (Exception e){
+            throw new Exception("No se puede crear el plan");
         }
     }
 }
