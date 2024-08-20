@@ -121,6 +121,41 @@ public class TelefoniaCia implements ServiciosEmpresa {
     }
 
     @Override
+    public Cliente actuallizarCliente(String nombre, String telefono, String correo, String cedulaActual, String cedulaNueva) throws Exception {
+        try {
+            Cliente cliente = buscarCliente(cedulaActual);
+
+            if (cliente != null){
+                cliente.setNombre(escogerPrimeroNoNulo(nombre, cliente.getNombre()));
+                cliente.setTelefono(escogerPrimeroNoNulo(telefono, cliente.getTelefono()));
+                cliente.setCedula(escogerPrimeroNoNulo(cedulaNueva, cedulaActual));
+                cliente.setCorreo(escogerPrimeroNoNulo(correo, cliente.getCorreo()));
+
+                return cliente;
+            }
+
+            return null;
+
+        } catch (Exception e) {
+            throw new Exception("No se pudo actualizar el cliente");
+        }
+    }
+
+    @Override
+    public Boolean validarString(String cadena) throws Exception {
+        if(cadena.isEmpty() || cadena.isBlank()) {
+            return false;
+        }
+        return  true;
+    }
+
+    @Override
+    public String escogerPrimeroNoNulo(String cadena1, String cadena2) throws Exception {
+        if (validarString(cadena1)) {
+            return cadena1;
+        }
+        return cadena2;
+    }
     public float calcularCostoTotalMensual(Plan plan) throws Exception {
         float total = 0;
         try{

@@ -6,7 +6,6 @@ import lombok.*;
 
 @Setter
 @Getter
-@ToString
 @AllArgsConstructor
 @Builder
 public class Cliente {
@@ -19,5 +18,15 @@ public class Cliente {
 
     public void agregarNuevoPlan(Plan nuevoPlan){
         planes.add(nuevoPlan);
+
+    @Override
+    public String toString() {
+        return
+                "id: '" + id + '\n' +
+                "nombre: '" + nombre + '\n' +
+                "cedula: '" + cedula + '\n' +
+                "telefono: '" + telefono + '\n' +
+                "correo: '" + correo + '\n' +
+                "planes:" + planes;
     }
 }
