@@ -16,4 +16,8 @@ public class Cliente {
     private String telefono;
     private String correo;
     private ArrayList<Plan> planes;
+
+    public void agregarNuevoPlan(Plan nuevoPlan){
+        planes.add(nuevoPlan);
+    }
 }
