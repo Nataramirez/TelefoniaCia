@@ -7,6 +7,9 @@ import co.edu.Telefonia.modelos.enums.TipoServicioTv;
 import co.edu.Telefonia.modelos.Cliente;
 import co.edu.Telefonia.modelos.Plan;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 
 public interface ServiciosEmpresa {
     Cliente crearCliente(String nombre, String cedula, String telefono, String correo) throws Exception;
@@ -20,4 +23,7 @@ public interface ServiciosEmpresa {
     Plan validarDireccion(String direccion) throws Exception;
     float calcularCostoTotalMensual(Plan plan) throws Exception;
     Plan crearPlan(String cedulaCliente, String direccion, TipoServicioTelefonia servicioTelefono, TipoServicioTv servicioTv, TipoServicioInternet servicioInternet) throws Exception;
+    int contarMesesPlan(Plan plan) throws Exception;
+    Factura crearFactura(Cliente cliente, Plan plan) throws Exception;
+    void enviarFacturas() throws Exception;
 }

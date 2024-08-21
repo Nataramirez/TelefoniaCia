@@ -7,6 +7,7 @@ import lombok.*;
 import co.edu.Telefonia.servicios.ServiciosEmpresa;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @Setter
 public class TelefoniaCia implements ServiciosEmpresa {
     private List<Cliente> clientes;
+    private ArrayList<Factura> facturas;
 
     /**
      * Método para crear un nuevo cliente
@@ -143,10 +145,7 @@ public class TelefoniaCia implements ServiciosEmpresa {
 
     @Override
     public Boolean validarString(String cadena) throws Exception {
-        if(cadena.isEmpty() || cadena.isBlank()) {
-            return false;
-        }
-        return  true;
+        return !cadena.isEmpty() && !cadena.isBlank();
     }
 
     @Override
@@ -230,4 +229,71 @@ public class TelefoniaCia implements ServiciosEmpresa {
             throw new Exception("No se puede crear el plan");
         }
     }
+
+    @Override
+    public int contarMesesPlan(Plan plan) throws Exception {
+        LocalDate fechaInicio = plan.getUltimaFechaFacturacion() != null
+                ? plan.getUltimaFechaFacturacion()
+                : plan.getFechaCreacion();
+        LocalDate fechaFin = LocalDate.now();
+
+        LocalDate fechaInicioAjustada = fechaInicio.withDayOfMonth(Math.min(fechaInicio.getDayOfMonth(), fechaFin.lengthOfMonth()));
+
+        int mesesCompletos = (int) ChronoUnit.MONTHS.between(fechaInicioAjustada, fechaFin);
+
+        if (fechaFin.getDayOfMonth() >= fechaInicio.getDayOfMonth()) {
+            mesesCompletos++;
+        }
+
+        return mesesCompletos;
+    }
+
+
+
+    @Override
+    public Factura crearFactura(Cliente cliente, Plan plan) throws Exception {
+        try {
+            LocalDate fechaFactura = null;
+            Factura factura = null;
+
+            if (plan.getUltimaFechaFacturacion() == null) {
+                if (plan.getFechaCreacion().plusMonths(1).isBefore(LocalDate.now())) {
+                    fechaFactura = plan.getFechaCreacion().plusMonths(1);
+                }
+            }else{
+                fechaFactura = plan.getUltimaFechaFacturacion().plusMonths(1);
+            }
+
+            if (fechaFactura != null){
+                factura  = Factura.builder()
+                        .plan(plan)
+                        .costoTotal(calcularCostoTotalMensual(plan))
+                        .fecha(fechaFactura)
+                        .id(UUID.randomUUID().toString())
+                        .build();
+                facturas.add(factura);
+                plan.setUltimaFechaFacturacion(fechaFactura);
+            }
+            return factura;
+        }catch (Exception e){
+            throw new Exception("No se pudo enviar la factura correctamente");
+        }
+    }
+
+
+    @Override
+    public void enviarFacturas() throws Exception {
+        for (Cliente cliente : clientes) {
+            for (Plan plan : cliente.getPlanes()) {
+
+                int cantidadFacturasFaltantes = contarMesesPlan(plan);
+
+                for (int i = 0; i<cantidadFacturasFaltantes; i++){
+                    Factura factura = crearFactura(cliente, plan);
+                    facturas.add(factura);
+                }
+            }
+        }
+    }
+
 }

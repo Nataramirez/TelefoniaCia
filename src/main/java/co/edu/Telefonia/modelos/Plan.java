@@ -17,4 +17,6 @@ public class Plan {
     private LocalDate fechaCreacion;
     private ArrayList<Servicio> servicios;
     private float costoTotal;
+    private LocalDate ultimaFechaFacturacion;
+
 }
