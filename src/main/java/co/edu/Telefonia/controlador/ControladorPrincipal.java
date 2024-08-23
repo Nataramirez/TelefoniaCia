@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.Getter;
 
+import java.util.ArrayList;
+
 public class ControladorPrincipal implements ServiciosEmpresa {
     @Getter
     private final TelefoniaCia telefoniaCia;
@@ -111,5 +113,25 @@ public class ControladorPrincipal implements ServiciosEmpresa {
     @Override
     public Plan crearPlan(String cedulaCliente, String direccion, TipoServicioTelefonia servicioTelefono, TipoServicioTv servicioTv, TipoServicioInternet servicioInternet) throws Exception {
         return telefoniaCia.crearPlan(cedulaCliente, direccion, servicioTelefono, servicioTv, servicioInternet);
+    }
+
+    @Override
+    public ArrayList<Plan> listarPlanesPorCliente(String cedula) throws Exception {
+        return telefoniaCia.listarPlanesPorCliente(cedula);
+    }
+
+    @Override
+    public int contarMesesPlan(Plan plan) throws Exception {
+        return telefoniaCia.contarMesesPlan(plan);
+    }
+
+    @Override
+    public Factura crearFactura(Cliente cliente, Plan plan) throws Exception {
+        return telefoniaCia.crearFactura(cliente, plan);
+    }
+
+    @Override
+    public void enviarFacturas() throws Exception {
+        telefoniaCia.enviarFacturas();
     }
 }
