@@ -71,6 +71,7 @@ public class TelefoniaCia implements ServiciosEmpresa {
         try {
             for (Cliente cliente : clientes) {
                 if (cliente.getCedula().equals(cedula)) {
+
                     return cliente;
                 }
             }
@@ -296,4 +297,15 @@ public class TelefoniaCia implements ServiciosEmpresa {
         }
     }
 
+
+    @Override
+    public ArrayList<Plan> listarPlanesPorCliente(String cedula) throws Exception {
+        try {
+            Cliente cliente = buscarCliente(cedula);
+            return cliente.getPlanes();
+        } catch (Exception e) {
+            throw new Exception("El cliente no cuenta con planes asociados");
+
+        }
+    }
 }
