@@ -17,6 +17,16 @@ import java.util.UUID;
 public class TelefoniaCia implements ServiciosEmpresa {
     private List<Cliente> clientes;
     private ArrayList<Factura> facturas;
+    private List<ServicioInternet> servicioInternet;
+    private List<ServicioTelefonia> servicioTelefonia;
+    private List<ServicioTv> servicioTv;
+
+    public TelefoniaCia() {
+        clientes = new ArrayList<>();
+        servicioInternet = new ArrayList<>();
+        servicioTelefonia = new ArrayList<>();
+        servicioTv = new ArrayList<>();
+    }
 
     /**
      * Método para crear un nuevo cliente
