@@ -23,6 +23,7 @@ public interface ServiciosEmpresa {
     Plan validarDireccion(String direccion) throws Exception;
     float calcularCostoTotalMensual(Plan plan) throws Exception;
     Plan crearPlan(String cedulaCliente, String direccion, TipoServicioTelefonia servicioTelefono, TipoServicioTv servicioTv, TipoServicioInternet servicioInternet) throws Exception;
+    ArrayList<Plan> listarPlanesPorCliente(String cedula) throws Exception;
     int contarMesesPlan(Plan plan) throws Exception;
     Factura crearFactura(Cliente cliente, Plan plan) throws Exception;
     void enviarFacturas() throws Exception;
