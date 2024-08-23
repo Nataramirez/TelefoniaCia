@@ -1,0 +1,4 @@
+co\edu\Telefonia\controlador\InicioControlador.class
+co\edu\Telefonia\controlador\ControladorPrincipal.class
+co\edu\Telefonia\app\TelefoniaCiaApp.class
+co\edu\Telefonia\modelos\enums\TipoPantalla.class

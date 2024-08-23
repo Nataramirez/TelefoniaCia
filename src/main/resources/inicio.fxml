@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.Telefonia.controlador.InicioControlador">
+    <VBox alignment="CENTER" prefHeight="180.0" prefWidth="240.0" style="-fx-padding: 32; -fx-background-color: #d8dbe2;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+        <Label style="-fx-font-size: 20;" text="Registro">
+            <VBox.margin>
+                <Insets bottom="32.0" />
+            </VBox.margin></Label>
+        <GridPane alignment="CENTER" hgap="10.0" prefHeight="262.0" prefWidth="375.0" vgap="10.0">
+            <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Nombre y apellido" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="nombre" minHeight="30.0" minWidth="220" promptText="Ingrese su nombre y apellido" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Cédula" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="cedula" minHeight="30.0" promptText="Ingrese su cédula" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Teléfono" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <TextField fx:id="telefono" minHeight="30.0" promptText="Ingrese su teléfono" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Correo electrónico" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+            <TextField fx:id="correo" minHeight="30.0" promptText="Ingrese su correo" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+        <HBox alignment="CENTER" prefHeight="77.0" prefWidth="936.0">
+            <Button id="btnRegistrar" minHeight="40.0" minWidth="130.0" onAction="#registrarUsuario" style="-fx-background-color: #373f51; -fx-text-fill: white" text="Registrarse">
+                <HBox.margin>
+                    <Insets />
+                </HBox.margin></Button>
+         <padding>
+            <Insets top="16.0" />
+         </padding>
+        </HBox>
+
+        <HBox.margin>
+            <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+        </HBox.margin>
+      <VBox.margin>
+         <Insets top="24.0" />
+      </VBox.margin>
+      <padding>
+         <Insets top="24.0" />
+      </padding>
+
+    </VBox>
+
+</VBox>
