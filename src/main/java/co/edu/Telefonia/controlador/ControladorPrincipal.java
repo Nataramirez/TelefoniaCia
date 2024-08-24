@@ -7,15 +7,17 @@ import co.edu.Telefonia.modelos.enums.TipoServicioTelefonia;
 import co.edu.Telefonia.modelos.enums.TipoServicioTv;
 import co.edu.Telefonia.servicios.ServiciosEmpresa;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import lombok.Getter;
 
 import java.util.ArrayList;
 
+@Getter
 public class ControladorPrincipal implements ServiciosEmpresa {
-    @Getter
     private final TelefoniaCia telefoniaCia;
     public static ControladorPrincipal INSTANCIA;
 
@@ -58,6 +60,19 @@ public class ControladorPrincipal implements ServiciosEmpresa {
             return  null;
         }
 
+    }
+
+    public void mostrarAlerta(String mensaje, Alert.AlertType tipo){
+        Alert alert = new Alert(tipo);
+        alert.setHeaderText(mensaje);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
+    public void cerrarVentana(Node node){
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
     }
 
     @Override
