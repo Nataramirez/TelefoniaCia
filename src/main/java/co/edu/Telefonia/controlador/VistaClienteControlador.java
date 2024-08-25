@@ -1,15 +1,22 @@
 package co.edu.Telefonia.controlador;
 
 import co.edu.Telefonia.modelos.Cliente;
+import co.edu.Telefonia.modelos.Plan;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class VistaClienteControlador implements Initializable {
@@ -28,6 +35,16 @@ public class VistaClienteControlador implements Initializable {
     @FXML
     private TextField correoCliente;
 
+    @FXML
+    private TableView tablaPlanes;
+
+    @FXML
+    private TableColumn<Plan, String> id;
+    @FXML
+    private TableColumn<Plan, String> direccion;
+
+    @FXML
+    private TableColumn<Plan, Float> costo;
     private Cliente cliente;
 
     @Override
@@ -40,6 +57,8 @@ public class VistaClienteControlador implements Initializable {
             cedulaCliente.setText(cliente.getCedula());
             telefonoCliente.setText(cliente.getTelefono());
             correoCliente.setText(cliente.getCorreo());
+
+            llenarTabla();
         } else {
             controladorPrincipal.mostrarAlerta("No se encontró información del cliente.", Alert.AlertType.WARNING);
         }
@@ -102,5 +121,23 @@ public class VistaClienteControlador implements Initializable {
             return false;
         }
         return true;
+    }
+
+    private void llenarTabla(){
+        try {
+            ArrayList<Plan> planes = controladorPrincipal.buscarCliente(cliente.getCedula()).getPlanes();
+
+            if (planes == null || planes.isEmpty()) {
+                Platform.runLater(() -> controladorPrincipal.mostrarAlerta("Oh no!, el cliente no tiene planes asociados", Alert.AlertType.INFORMATION));
+            }else{
+                id.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
+                direccion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDireccion()));
+                costo.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getCostoTotal()).asObject());
+
+                tablaPlanes.setItems( FXCollections.observableArrayList(planes));
+            }
+        } catch (Exception e){
+            controladorPrincipal.mostrarAlerta("A ocurrido un error, no fue posible realizar la busqueda de los planes", Alert.AlertType.ERROR);
+        }
     }
 }
