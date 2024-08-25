@@ -7,6 +7,7 @@ import lombok.*;
 import co.edu.Telefonia.servicios.ServiciosEmpresa;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -304,6 +305,36 @@ public class TelefoniaCia implements ServiciosEmpresa {
                     facturas.add(factura);
                 }
             }
+        }
+    }
+
+    @Override
+    public ArrayList<Factura> generarReporteMensual() throws Exception {
+        ArrayList<Factura> facturasDelMesAnterior = new ArrayList<>();
+
+        try {
+            YearMonth mesAnterior = YearMonth.now();
+            LocalDate inicioMesAnterior = mesAnterior.atDay(1);
+            LocalDate finMesAnterior = mesAnterior.atEndOfMonth();
+
+            if (facturas != null && !facturas.isEmpty()){
+                for (Factura factura : facturas) {
+                    LocalDate fechaFactura = factura.getFecha();
+
+                    if ((fechaFactura.isEqual(inicioMesAnterior) || fechaFactura.isAfter(inicioMesAnterior)) &&
+                            (fechaFactura.isEqual(finMesAnterior) || fechaFactura.isBefore(finMesAnterior))) {
+
+                        facturasDelMesAnterior.add(factura);
+                    }
+                }
+            }
+
+            return facturasDelMesAnterior;
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new Exception("No se pudo generar el reporte mensual de facturas", e);
         }
     }
 
