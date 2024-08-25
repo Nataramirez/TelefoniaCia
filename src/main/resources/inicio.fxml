@@ -6,8 +6,8 @@
 
 <VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.Telefonia.controlador.InicioControlador">
     <HBox>
-        <TextField fx:id="buscarCedula" maxWidth="340.0" minHeight="30.0" prefHeight="30.0" prefWidth="172.0" promptText="Ingrese cedula cliente" />
-        <Button id="btnBuscarCliente" minHeight="30.0" minWidth="104.0" onAction="#buscarCliente" style="-fx-background-color: #373f51; -fx-text-fill: white" text="Buscar cliente">
+        <TextField fx:id="buscarCedula" maxWidth="340.0" minHeight="30.0" onAction="#buscarClienteVista" prefHeight="30.0" prefWidth="172.0" promptText="Ingrese cedula cliente" />
+        <Button id="btnBuscarCliente" minHeight="30.0" minWidth="104.0" onAction="#buscarClienteVista" style="-fx-background-color: #373f51; -fx-text-fill: white" text="Buscar cliente">
          <HBox.margin>
             <Insets left="8.0" />
          </HBox.margin>

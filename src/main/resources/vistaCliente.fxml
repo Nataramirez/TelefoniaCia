@@ -4,27 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.Telefonia.controlador.InicioControlador">
-    <HBox>
-        <TextField fx:id="buscarCedula" maxWidth="340.0" minHeight="30.0" onAction="#buscarClienteVista" prefHeight="30.0" prefWidth="172.0" promptText="Ingrese cedula cliente" />
-        <Button id="btnBuscarCliente" minHeight="30.0" minWidth="104.0" onAction="#buscarClienteVista" style="-fx-background-color: #373f51; -fx-text-fill: white" text="Buscar cliente">
-         <HBox.margin>
-            <Insets left="8.0" />
-         </HBox.margin>
-         <padding>
-            <Insets left="8.0" right="8.0" />
-         </padding></Button>
-      <VBox.margin>
-         <Insets left="32.0" top="32.0" />
-      </VBox.margin>
-    </HBox>
-
-    <HBox>
-        <VBox alignment="CENTER" prefHeight="180.0" prefWidth="240.0" style="-fx-padding: 32; -fx-background-color: #d8dbe2;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-            <Label style="-fx-font-size: 20;" text="Registro Cliente">
-                <VBox.margin>
-                    <Insets bottom="32.0" />
-                </VBox.margin></Label>
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.Telefonia.controlador.VistaClienteControlador">
+        <VBox alignment="CENTER" prefHeight="134.0" prefWidth="252.0" style="-fx-padding: 32; -fx-background-color: #d8dbe2;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
             <GridPane alignment="CENTER" hgap="10.0" prefHeight="262.0" prefWidth="375.0" vgap="10.0">
                 <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Nombre y apellido" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                 <TextField fx:id="nombreCliente" minHeight="30.0" minWidth="220" promptText="Ingrese nombre y apellido" GridPane.columnIndex="0" GridPane.rowIndex="1" />
@@ -40,19 +21,19 @@
                 <columnConstraints>
                     <ColumnConstraints />
                 </columnConstraints>
-            <rowConstraints>
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-            </rowConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                </rowConstraints>
             </GridPane>
             <HBox alignment="CENTER" prefHeight="77.0" prefWidth="936.0">
-                <Button id="btnRegistrarCliente" minHeight="40.0" minWidth="130.0" onAction="#registrarCliente" style="-fx-background-color: #373f51; -fx-text-fill: white" text="Registrar Cliente">
+                <Button id="btnRegistrarCliente" fx:id="btnActualizar" minHeight="40.0" minWidth="130.0" onAction="#actualizarCliente" style="-fx-background-color: #373f51; -fx-text-fill: white" text="Actualizar">
                     <HBox.margin>
                         <Insets />
                     </HBox.margin></Button>
@@ -73,7 +54,3 @@
 
         </VBox>
     </HBox>
-
-
-
-</VBox>

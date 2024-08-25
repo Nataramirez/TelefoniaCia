@@ -21,8 +21,12 @@ public class ControladorPrincipal implements ServiciosEmpresa {
     private final TelefoniaCia telefoniaCia;
     public static ControladorPrincipal INSTANCIA;
 
+    @Getter
+    private final Sesion sesion;
+
     private ControladorPrincipal() {
         telefoniaCia = new TelefoniaCia();
+        sesion = new Sesion();
     }
 
     public static ControladorPrincipal getInstancia() {
@@ -31,6 +35,9 @@ public class ControladorPrincipal implements ServiciosEmpresa {
         }
         return INSTANCIA;
     }
+
+
+
 
     public FXMLLoader navegarVentana(String nombreArchivoFxml, String tituloVentana){
         try {

@@ -1,6 +1,7 @@
 package co.edu.Telefonia.controlador;
 
 import co.edu.Telefonia.modelos.Cliente;
+import co.edu.Telefonia.modelos.Sesion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -103,6 +104,23 @@ public class InicioControlador {
             return controladorPrincipal.buscarCliente(buscarCedula.getText());
         }catch (Exception e){
             return null;
+        }
+    }
+
+    public void buscarClienteVista(){
+        try{
+            Cliente cliente = controladorPrincipal.buscarCliente(buscarCedula.getText());
+
+            if (cliente == null) {
+                controladorPrincipal.mostrarAlerta("El cliente no se encuentra registrado", Alert.AlertType.INFORMATION);
+            }else{
+                Sesion sesion = controladorPrincipal.getSesion();
+                sesion.setCliente(cliente);
+                controladorPrincipal.navegarVentana("/vistaCliente.fxml", "TelefonoaCia | Visualizaion Cliente");
+            }
+
+        }catch (Exception e){
+            controladorPrincipal.mostrarAlerta("A ocurrido un error, no fue posible buscar el cliente \n Error: "+ e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 }
