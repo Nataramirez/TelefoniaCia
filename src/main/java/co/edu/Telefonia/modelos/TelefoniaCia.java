@@ -1,5 +1,6 @@
 package co.edu.Telefonia.modelos;
 
+import co.edu.Telefonia.modelos.enums.TipoServicio;
 import co.edu.Telefonia.modelos.enums.TipoServicioInternet;
 import co.edu.Telefonia.modelos.enums.TipoServicioTelefonia;
 import co.edu.Telefonia.modelos.enums.TipoServicioTv;
@@ -89,6 +90,26 @@ public class TelefoniaCia implements ServiciosEmpresa {
             return null;
         }catch (Exception e){
             throw new Exception("No se puede buscar cliente");
+        }
+    }
+
+    @Override
+    public Servicio crearServicio(String nombre, String descripcion, float precio, TipoServicio tipoServicio) throws Exception {
+        try {
+            switch (tipoServicio) {
+                case SERVICIO_TV -> {
+                    return new ServicioTv( UUID.randomUUID().toString(), nombre, descripcion, precio);
+                }
+                case SERVICIO_TELEFONIA -> {
+                    return new ServicioTelefonia( UUID.randomUUID().toString(), nombre, descripcion, precio);
+                }
+                case SERVICIO_INTERNET -> {
+                    return new ServicioInternet( UUID.randomUUID().toString(), nombre, descripcion, precio);
+                }
+                default -> throw new Exception("No se puede crear el servicio");
+            }
+        }catch (Exception e){
+            throw new Exception("No se puede crear el servicio");
         }
     }
 

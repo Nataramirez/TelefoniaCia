@@ -3,9 +3,9 @@ package co.edu.Telefonia.controlador;
 import co.edu.Telefonia.modelos.Cliente;
 import co.edu.Telefonia.modelos.Sesion;
 import co.edu.Telefonia.modelos.enums.TipoPantalla;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class InicioControlador {
@@ -20,6 +20,18 @@ public class InicioControlador {
     public TextField correoCliente;
     @FXML
     public TextField buscarCedula;
+    @FXML
+    public TextField cedulaNuevoPlan;
+    @FXML
+    public TextField direccionNuevoPlan;
+    @FXML
+    public TextField nombreClientePlan;
+    @FXML
+    public TextField telefonoClientePlan;
+    @FXML
+    public TextField correoClientePlan;
+    @FXML
+    public Button btnClientePlan;
 
     public InicioControlador() {
         controladorPrincipal = ControladorPrincipal.getInstancia();
@@ -28,7 +40,7 @@ public class InicioControlador {
 
 
     public void registrarCliente() {
-        if(validarCampos() && !validarCamposNumericos()){
+        if(validarCampos()){
             controladorPrincipal.mostrarAlerta("Todos los campos son obligatorios. Los campos de cédula y teléfono deben ser numéricos",
                     Alert.AlertType.WARNING);
         } else {
@@ -64,7 +76,7 @@ public class InicioControlador {
                 nombreCliente.getText().isBlank() ||
                 cedulaCliente.getText().isBlank() ||
                 telefonoCliente.getText().isBlank() ||
-                correoCliente.getText().isBlank();
+                correoCliente.getText().isBlank() || !validarCamposNumericos();
     }
 
     private boolean validarCamposNumericos(){
