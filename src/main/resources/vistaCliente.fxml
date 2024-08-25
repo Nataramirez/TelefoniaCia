@@ -3,8 +3,9 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.Telefonia.controlador.VistaClienteControlador">
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.Telefonia.controlador.VistaClienteControlador">
         <VBox alignment="CENTER" prefHeight="134.0" prefWidth="252.0" style="-fx-padding: 32; -fx-background-color: #d8dbe2;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
             <GridPane alignment="CENTER" hgap="10.0" prefHeight="262.0" prefWidth="375.0" vgap="10.0">
                 <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Nombre y apellido" GridPane.columnIndex="0" GridPane.rowIndex="0" />
@@ -53,4 +54,26 @@
             </padding>
 
         </VBox>
+   <VBox prefHeight="409.0" prefWidth="342.0">
+      <children>
+         <Label text="Planes ">
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin>
+            <font>
+               <Font size="25.0" />
+            </font>
+         </Label>
+         <TableView fx:id="tablaPlanes" prefHeight="338.0" prefWidth="342.0">
+           <columns>
+             <TableColumn fx:id="id" prefWidth="92.20001524686813" text="ID" />
+             <TableColumn fx:id="direccion" prefWidth="119.0" text="Direccion" />
+               <TableColumn fx:id="costo" prefWidth="130.39998474121091" text="Costo total" />
+           </columns>
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin>
+         </TableView>
+      </children>
+   </VBox>
     </HBox>
