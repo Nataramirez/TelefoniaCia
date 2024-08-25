@@ -6,7 +6,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum TipoPantalla {
-    INICIO("/inicio.fxml", "TelefoniaCia Inicio");
+    INICIO("/inicio.fxml", "TelefoniaCia Inicio"),
+    VISUALIZACION_CLIENTE("/vistaCliente.fxml", "TelefonoaCia | Visualizaion Cliente");
     private String ruta;
     private String nombre;
 }

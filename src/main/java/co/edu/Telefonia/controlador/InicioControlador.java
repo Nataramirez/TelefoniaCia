@@ -2,6 +2,7 @@ package co.edu.Telefonia.controlador;
 
 import co.edu.Telefonia.modelos.Cliente;
 import co.edu.Telefonia.modelos.Sesion;
+import co.edu.Telefonia.modelos.enums.TipoPantalla;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -87,10 +88,9 @@ public class InicioControlador {
                 if(cliente == null){
                     controladorPrincipal.mostrarAlerta("No se encontró cliente", Alert.AlertType.WARNING);
                 }else {
-                    controladorPrincipal.mostrarAlerta(
-                            "EN CONSTRUCCION: Debe abrir la ventana con la data precargada del cliente y opción para modificar datos del usuario",
-                            Alert.AlertType.WARNING
-                    );
+                    Sesion sesion = controladorPrincipal.getSesion();
+                    sesion.setCliente(cliente);
+                    controladorPrincipal.navegarVentana(TipoPantalla.VISUALIZACION_CLIENTE.getRuta(), TipoPantalla.VISUALIZACION_CLIENTE.getNombre());
                 }
             } catch (NumberFormatException e){
                 controladorPrincipal.mostrarAlerta("Ingresa sólo números para buscar cliente.",
@@ -107,20 +107,4 @@ public class InicioControlador {
         }
     }
 
-    public void buscarClienteVista(){
-        try{
-            Cliente cliente = controladorPrincipal.buscarCliente(buscarCedula.getText());
-
-            if (cliente == null) {
-                controladorPrincipal.mostrarAlerta("El cliente no se encuentra registrado", Alert.AlertType.INFORMATION);
-            }else{
-                Sesion sesion = controladorPrincipal.getSesion();
-                sesion.setCliente(cliente);
-                controladorPrincipal.navegarVentana("/vistaCliente.fxml", "TelefonoaCia | Visualizaion Cliente");
-            }
-
-        }catch (Exception e){
-            controladorPrincipal.mostrarAlerta("A ocurrido un error, no fue posible buscar el cliente \n Error: "+ e.getMessage(), Alert.AlertType.ERROR);
-        }
-    }
 }
