@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.Telefonia.controlador.InicioControlador">
+<VBox prefHeight="570.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.Telefonia.controlador.InicioControlador">
     <HBox>
         <TextField fx:id="buscarCedula" maxWidth="340.0" minHeight="30.0" onAction="#buscarCliente" prefHeight="30.0" prefWidth="172.0" promptText="Ingrese cedula cliente" />
         <Button id="btnBuscarCliente" minHeight="30.0" minWidth="104.0" onAction="#buscarCliente" style="-fx-background-color: #373f51; -fx-text-fill: white" text="Buscar cliente">
@@ -14,6 +14,14 @@
          <padding>
             <Insets left="8.0" right="8.0" />
          </padding></Button>
+      <Button id="btnBuscarCliente" layoutX="190.0" layoutY="10.0" minHeight="30.0" minWidth="104.0" onAction="#reporteMensual" style="-fx-background-color: #373f51; -fx-text-fill: white;" text="Reporte mensual">
+         <padding>
+            <Insets left="8.0" right="8.0" />
+         </padding>
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </Button>
       <VBox.margin>
          <Insets left="32.0" top="32.0" />
       </VBox.margin>

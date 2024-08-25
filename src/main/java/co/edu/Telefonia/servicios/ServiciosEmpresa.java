@@ -27,4 +27,6 @@ public interface ServiciosEmpresa {
     int contarMesesPlan(Plan plan) throws Exception;
     Factura crearFactura(Cliente cliente, Plan plan) throws Exception;
     void enviarFacturas() throws Exception;
+
+    ArrayList<Factura> generarReporteMensual() throws Exception;
 }

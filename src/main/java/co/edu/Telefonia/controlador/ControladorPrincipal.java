@@ -156,4 +156,9 @@ public class ControladorPrincipal implements ServiciosEmpresa {
     public void enviarFacturas() throws Exception {
         telefoniaCia.enviarFacturas();
     }
+
+    @Override
+    public ArrayList<Factura> generarReporteMensual() throws Exception {
+        return telefoniaCia.generarReporteMensual();
+    }
 }
