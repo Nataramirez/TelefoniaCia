@@ -7,6 +7,7 @@ import lombok.*;
 import co.edu.Telefonia.servicios.ServiciosEmpresa;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -27,8 +28,8 @@ public class TelefoniaCia implements ServiciosEmpresa {
         servicioInternet = new ArrayList<>();
         servicioTelefonia = new ArrayList<>();
         servicioTv = new ArrayList<>();
+        facturas = new ArrayList<>();
     }
-
     /**
      * Método para crear un nuevo cliente
      * @param nombre
@@ -313,7 +314,7 @@ public class TelefoniaCia implements ServiciosEmpresa {
         ArrayList<Factura> facturasDelMesAnterior = new ArrayList<>();
 
         try {
-            YearMonth mesAnterior = YearMonth.now();
+            YearMonth mesAnterior = YearMonth.now().minusMonths(1);;
             LocalDate inicioMesAnterior = mesAnterior.atDay(1);
             LocalDate finMesAnterior = mesAnterior.atEndOfMonth();
 
