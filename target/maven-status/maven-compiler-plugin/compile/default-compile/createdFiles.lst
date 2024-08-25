@@ -14,9 +14,11 @@ co\edu\Telefonia\modelos\Factura$FacturaBuilder.class
 co\edu\Telefonia\controlador\ReporteMensualControlador.class
 co\edu\Telefonia\servicios\ServiciosEmpresa.class
 co\edu\Telefonia\modelos\ServicioTelefonia.class
+co\edu\Telefonia\modelos\enums\TipoServicio.class
 co\edu\Telefonia\modelos\Plan$PlanBuilder.class
 co\edu\Telefonia\modelos\Cliente.class
 co\edu\Telefonia\modelos\Cliente$ClienteBuilder.class
+co\edu\Telefonia\modelos\TelefoniaCia$1.class
 co\edu\Telefonia\modelos\TelefoniaCia.class
 co\edu\Telefonia\modelos\ServicioTv.class
 co\edu\Telefonia\modelos\enums\TipoServicioInternet.class

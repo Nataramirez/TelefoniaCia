@@ -1,10 +1,7 @@
 package co.edu.Telefonia.controlador;
 
 import co.edu.Telefonia.modelos.*;
-import co.edu.Telefonia.modelos.enums.TipoPantalla;
-import co.edu.Telefonia.modelos.enums.TipoServicioInternet;
-import co.edu.Telefonia.modelos.enums.TipoServicioTelefonia;
-import co.edu.Telefonia.modelos.enums.TipoServicioTv;
+import co.edu.Telefonia.modelos.enums.*;
 import co.edu.Telefonia.servicios.ServiciosEmpresa;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -90,6 +87,11 @@ public class ControladorPrincipal implements ServiciosEmpresa {
     @Override
     public Cliente buscarCliente(String cedula) throws Exception {
         return telefoniaCia.buscarCliente(cedula);
+    }
+
+    @Override
+    public Servicio crearServicio(String nombre, String descripcion, float precio, TipoServicio tipoServicio) throws Exception {
+        return telefoniaCia.crearServicio(nombre, descripcion, precio, tipoServicio);
     }
 
     @Override

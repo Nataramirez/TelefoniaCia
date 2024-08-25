@@ -1,6 +1,7 @@
 package co.edu.Telefonia.servicios;
 
 import co.edu.Telefonia.modelos.*;
+import co.edu.Telefonia.modelos.enums.TipoServicio;
 import co.edu.Telefonia.modelos.enums.TipoServicioInternet;
 import co.edu.Telefonia.modelos.enums.TipoServicioTelefonia;
 import co.edu.Telefonia.modelos.enums.TipoServicioTv;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public interface ServiciosEmpresa {
     Cliente crearCliente(String nombre, String cedula, String telefono, String correo) throws Exception;
     Cliente buscarCliente(String cedula) throws Exception;
+    Servicio crearServicio(String nombre, String descripcion, float precio, TipoServicio tipoServicio) throws Exception;
     ServicioTelefonia crearServicio(TipoServicioTelefonia servicioTelefonia) throws Exception;
     ServicioTv crearServicio(TipoServicioTv servicioTv) throws Exception;
     ServicioInternet crearServicio(TipoServicioInternet servicioInternet) throws Exception;
