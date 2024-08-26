@@ -242,7 +242,7 @@ public class TelefoniaCia implements ServiciosEmpresa {
     }
 
     @Override
-    public Plan crearPlan(String cedulaCliente, String direccion, TipoServicioTelefonia servicioTelefono, TipoServicioTv servicioTv, TipoServicioInternet servicioInternet) throws Exception {
+    public Plan crearPlan(String cedulaCliente, String direccion, ServicioTelefonia servicioTelefono, ServicioTv servicioTv, ServicioInternet servicioInternet) throws Exception {
         Plan nuevoPlan;
         ArrayList<Servicio> servicios = new ArrayList<>();
         try {
@@ -256,16 +256,13 @@ public class TelefoniaCia implements ServiciosEmpresa {
             }
 
             if(servicioTelefono != null){
-                ServicioTelefonia telefono = crearServicio(servicioTelefono);
-                servicios.add(telefono);
+                servicios.add(servicioTelefono);
             }
             if(servicioTv != null){
-                ServicioTv television = crearServicio(servicioTv);
-                servicios.add(television);
+                servicios.add(servicioTv);
             }
             if(servicioInternet != null){
-                ServicioInternet internet = crearServicio(servicioInternet);
-                servicios.add(internet);
+                servicios.add(servicioInternet);
             }
 
              nuevoPlan = Plan.builder()

@@ -53,19 +53,6 @@
 
                 <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Correo electrónico" GridPane.columnIndex="0" GridPane.rowIndex="6" />
                 <TextField fx:id="correoCliente" minHeight="30.0" promptText="Ingrese correo" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-                <columnConstraints>
-                    <ColumnConstraints />
-                </columnConstraints>
-            <rowConstraints>
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-            </rowConstraints>
 
             </GridPane>
             <HBox alignment="CENTER" prefHeight="77.0" prefWidth="936.0">
@@ -106,16 +93,6 @@
                     </padding></Button>
                 <Label alignment="BASELINE_RIGHT" prefHeight="18.0" prefWidth="65.0" text="Dirección" GridPane.columnIndex="3" GridPane.rowIndex="0" />
                 <TextField fx:id="direccionNuevoPlan" minHeight="30.0" minWidth="220" promptText="Dirección del plan" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-            <rowConstraints>
-               <RowConstraints />
-            </rowConstraints>
-            <columnConstraints>
-               <ColumnConstraints />
-               <ColumnConstraints />
-               <ColumnConstraints />
-               <ColumnConstraints />
-               <ColumnConstraints />
-            </columnConstraints>
             </GridPane>
             <GridPane alignment="CENTER" hgap="10.0" prefHeight="120.0" prefWidth="375.0" vgap="10.0">
                 <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Nombre y apellido" GridPane.columnIndex="0" GridPane.rowIndex="0" />
@@ -126,15 +103,6 @@
 
                 <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Correo electrónico" GridPane.columnIndex="2" GridPane.rowIndex="0" />
                 <TextField disable="true" fx:id="correoClientePlan" minHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                <columnConstraints>
-                    <ColumnConstraints />
-               <ColumnConstraints />
-               <ColumnConstraints />
-                </columnConstraints>
-            <rowConstraints>
-               <RowConstraints />
-               <RowConstraints />
-            </rowConstraints>
 
             </GridPane>
             <Label style="-fx-font-size: 16;" text="Seleccione los servicios del plan">
@@ -144,17 +112,17 @@
             <HBox>
                 <GridPane alignment="CENTER" hgap="10.0" prefHeight="80.0" prefWidth="600.0" vgap="10.0">
                     <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Televisión" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                    <ComboBox fx:id="btnServicioTV" minHeight="40.0" onAction="#obtenerServicioTV" prefWidth="150.0" promptText="Servicio Televisión" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <ComboBox fx:id="btnServicioTV" minHeight="30.0" onAction="#obtenerServicioTV" prefWidth="150.0" promptText="Servicio Televisión" GridPane.columnIndex="0" GridPane.rowIndex="1">
                         <HBox.margin>
                             <Insets left="24.0" right="24.0" />
                         </HBox.margin></ComboBox>
                     <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Internet" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                    <ComboBox fx:id="btnServicioInternet" minHeight="40.0" onAction="#obtenerServicioInternet" prefWidth="150.0" promptText="Servicio Internet" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <ComboBox fx:id="btnServicioInternet" minHeight="30.0" onAction="#obtenerServicioInternet" prefWidth="150.0" promptText="Servicio Internet" GridPane.columnIndex="1" GridPane.rowIndex="1">
                         <HBox.margin>
                             <Insets left="24.0" right="24.0" />
                         </HBox.margin></ComboBox>
                     <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Telefonía" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                    <ComboBox fx:id="btnServicioTelefonia" minHeight="40.0" onAction="#obtenerServicioTelefonia" prefWidth="150.0" promptText="Servicio Telefonía" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <ComboBox fx:id="btnServicioTelefonia" minHeight="30.0" onAction="#obtenerServicioTelefonia" prefWidth="150.0" promptText="Servicio Telefonía" GridPane.columnIndex="2" GridPane.rowIndex="1">
                         <HBox.margin>
                             <Insets left="24.0" right="24.0" />
                         </HBox.margin></ComboBox>
@@ -165,16 +133,6 @@
                         <padding>
                             <Insets left="8.0" right="8.0" />
                         </padding></Button>
-               <columnConstraints>
-                  <ColumnConstraints />
-                  <ColumnConstraints />
-                  <ColumnConstraints />
-                  <ColumnConstraints />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints />
-                  <RowConstraints />
-               </rowConstraints>
                 </GridPane>
             </HBox>
             <HBox.margin>
