@@ -24,7 +24,7 @@ public interface ServiciosEmpresa {
     String escogerPrimeroNoNulo(String cadena1, String cadena2) throws  Exception;
     Plan validarDireccion(String direccion) throws Exception;
     float calcularCostoTotalMensual(Plan plan) throws Exception;
-    Plan crearPlan(String cedulaCliente, String direccion, TipoServicioTelefonia servicioTelefono, TipoServicioTv servicioTv, TipoServicioInternet servicioInternet) throws Exception;
+    Plan crearPlan(String cedulaCliente, String direccion, ServicioTelefonia servicioTelefono, ServicioTv servicioTv, ServicioInternet servicioInternet) throws Exception;
     ArrayList<Plan> listarPlanesPorCliente(String cedula) throws Exception;
     int contarMesesPlan(Plan plan) throws Exception;
     Factura crearFactura(Cliente cliente, Plan plan) throws Exception;

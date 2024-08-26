@@ -135,7 +135,7 @@ public class ControladorPrincipal implements ServiciosEmpresa {
     }
 
     @Override
-    public Plan crearPlan(String cedulaCliente, String direccion, TipoServicioTelefonia servicioTelefono, TipoServicioTv servicioTv, TipoServicioInternet servicioInternet) throws Exception {
+    public Plan crearPlan(String cedulaCliente, String direccion, ServicioTelefonia servicioTelefono, ServicioTv servicioTv, ServicioInternet servicioInternet) throws Exception {
         return telefoniaCia.crearPlan(cedulaCliente, direccion, servicioTelefono, servicioTv, servicioInternet);
     }
 
