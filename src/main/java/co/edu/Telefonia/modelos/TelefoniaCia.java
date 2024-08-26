@@ -19,17 +19,34 @@ import java.util.UUID;
 public class TelefoniaCia implements ServiciosEmpresa {
     private List<Cliente> clientes;
     private ArrayList<Factura> facturas;
-    private List<ServicioInternet> servicioInternet;
-    private List<ServicioTelefonia> servicioTelefonia;
-    private List<ServicioTv> servicioTv;
+    private ArrayList<Servicio> serviciosInternet;
+    private ArrayList<Servicio> serviciosTelefonia;
+    private ArrayList<Servicio> serviciosTv;
 
     public TelefoniaCia() {
         clientes = new ArrayList<>();
-        servicioInternet = new ArrayList<>();
-        servicioTelefonia = new ArrayList<>();
-        servicioTv = new ArrayList<>();
+        serviciosInternet = new ArrayList<>();
+        serviciosTelefonia = new ArrayList<>();
+        serviciosTv = new ArrayList<>();
         facturas = new ArrayList<>();
+        serviciosIniciales();
     }
+
+    private void serviciosIniciales(){
+        for(TipoServicioInternet servicioInternet : TipoServicioInternet.values()){
+            ServicioInternet servicio = new ServicioInternet(UUID.randomUUID().toString(), servicioInternet.getCategoria(), servicioInternet.getDescripcion(), servicioInternet.getPrecio());
+            serviciosInternet.add(servicio);
+        }
+        for(TipoServicioTv servicioTV : TipoServicioTv.values()){
+            ServicioTv servicio = new ServicioTv(UUID.randomUUID().toString(), servicioTV.getCategoria(), servicioTV.getDescripcion(), servicioTV.getPrecio());
+            serviciosTv.add(servicio);
+        }
+        for(TipoServicioTelefonia servicioTelefonia : TipoServicioTelefonia.values()){
+            ServicioTelefonia servicio = new ServicioTelefonia(UUID.randomUUID().toString(), servicioTelefonia.getCategoria(), servicioTelefonia.getDescripcion(), servicioTelefonia.getPrecio());
+            serviciosTelefonia.add(servicio);
+        }
+    }
+
     /**
      * Método para crear un nuevo cliente
      * @param nombre

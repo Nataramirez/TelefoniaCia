@@ -1,14 +1,24 @@
 package co.edu.Telefonia.controlador;
 
 import co.edu.Telefonia.modelos.Cliente;
+import co.edu.Telefonia.modelos.Servicio;
+import co.edu.Telefonia.modelos.ServicioTv;
 import co.edu.Telefonia.modelos.Sesion;
 import co.edu.Telefonia.modelos.enums.TipoPantalla;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class InicioControlador {
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+public class InicioControlador implements Initializable {
     private final ControladorPrincipal controladorPrincipal;
     @FXML
     public TextField nombreCliente;
@@ -31,13 +41,26 @@ public class InicioControlador {
     @FXML
     public TextField correoClientePlan;
     @FXML
-    public Button btnClientePlan;
+    public ComboBox btnServicioTV;
+    @FXML
+    public ComboBox btnServicioInternet;
+    @FXML
+    public ComboBox btnServicioTelefonia;
+
+    Cliente clienteNuevoPlan;
 
     public InicioControlador() {
         controladorPrincipal = ControladorPrincipal.getInstancia();
         System.out.println("CLIENTES: " + controladorPrincipal.getTelefoniaCia().getClientes());
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        btnServicioTV.setItems(FXCollections.observableArrayList(nombresServicios(controladorPrincipal.getTelefoniaCia().getServiciosTv())));
+        btnServicioInternet.setItems(FXCollections.observableArrayList(nombresServicios(controladorPrincipal.getTelefoniaCia().getServiciosInternet())));
+        btnServicioTelefonia.setItems(FXCollections.observableArrayList(nombresServicios(controladorPrincipal.getTelefoniaCia().getServiciosTelefonia())));
+        System.out.println("TELEFONIA CIA: " + controladorPrincipal.getTelefoniaCia());
+    }
 
     public void registrarCliente() {
         if(validarCampos()){
@@ -128,6 +151,48 @@ public class InicioControlador {
         }
     }
 
+    public void buscarClientePlan() {
+        if(cedulaNuevoPlan.getText().isEmpty() || cedulaNuevoPlan.getText().isBlank()){
+            controladorPrincipal.mostrarAlerta("Requiere un número de cédula para realizar la búsqueda.",
+                    Alert.AlertType.WARNING);
+        } else {
+            try {
+                Integer.parseInt(cedulaNuevoPlan.getText());
+                Cliente cliente = buscarCliente(cedulaNuevoPlan.getText());
+                if(cliente == null){
+                    controladorPrincipal.mostrarAlerta("No se encontró cliente", Alert.AlertType.WARNING);
+                }else {
+                    clienteNuevoPlan = cliente;
+                    nombreClientePlan.setText(clienteNuevoPlan.getNombre());
+                    telefonoClientePlan.setText(clienteNuevoPlan.getTelefono());
+                    correoClientePlan.setText(clienteNuevoPlan.getCorreo());
+                }
+            } catch (NumberFormatException e){
+                controladorPrincipal.mostrarAlerta("Ingresa sólo números para buscar cliente.",
+                        Alert.AlertType.WARNING);
+            }
+        }
+    }
+
+    private ArrayList<String> nombresServicios(ArrayList<Servicio> servicios){
+        ArrayList<String> nombresServicio = new ArrayList<>();
+        for (Servicio servicio : servicios) {
+            nombresServicio.add(servicio.getNombre());
+        }
+        return nombresServicio;
+    }
+
+    public void obtenerServicioTV(ActionEvent actionEvent) {
+    }
+
+    public void obtenerServicioInternet(ActionEvent actionEvent) {
+    }
+
+    public void obtenerServicioTelefonia(ActionEvent actionEvent) {
+    }
+
+    public void CrearPlan(ActionEvent actionEvent) {
+    }
     @FXML
     private void crearServicio(){
         try {

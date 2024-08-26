@@ -97,7 +97,7 @@
             <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
                 <Label alignment="BASELINE_RIGHT" prefHeight="18.0" prefWidth="65.0" text="Cliente" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                 <TextField fx:id="cedulaNuevoPlan" minHeight="30.0" minWidth="220" promptText="Número de cédula" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <Button fx:id="btnClientePlan" minHeight="30.0" minWidth="104.0" onAction="#buscarCliente" style="-fx-background-color: #373f51; -fx-text-fill: white" text="Buscar cliente" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                <Button minHeight="30.0" minWidth="104.0" onAction="#buscarClientePlan" style="-fx-background-color: #373f51; -fx-text-fill: white" text="Buscar cliente" GridPane.columnIndex="2" GridPane.rowIndex="0">
                     <HBox.margin>
                         <Insets left="8.0" />
                     </HBox.margin>
@@ -117,15 +117,15 @@
                <ColumnConstraints />
             </columnConstraints>
             </GridPane>
-            <GridPane alignment="CENTER" hgap="10.0" prefHeight="262.0" prefWidth="375.0" vgap="10.0">
+            <GridPane alignment="CENTER" hgap="10.0" prefHeight="120.0" prefWidth="375.0" vgap="10.0">
                 <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Nombre y apellido" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <TextField fx:id="nombreClientePlan" disable="true" minHeight="30.0" minWidth="220" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField disable="true" fx:id="nombreClientePlan" minHeight="30.0" minWidth="220" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
                 <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Teléfono" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <TextField fx:id="telefonoClientePlan" disable="true" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField disable="true" fx:id="telefonoClientePlan" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
                 <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Correo electrónico" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                <TextField fx:id="correoClientePlan" disable="true" minHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <TextField disable="true" fx:id="correoClientePlan" minHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <columnConstraints>
                     <ColumnConstraints />
                <ColumnConstraints />
@@ -137,6 +137,46 @@
             </rowConstraints>
 
             </GridPane>
+            <Label style="-fx-font-size: 16;" text="Seleccione los servicios del plan">
+                <VBox.margin>
+                    <Insets bottom="24.0" />
+                </VBox.margin></Label>
+            <HBox>
+                <GridPane alignment="CENTER" hgap="10.0" prefHeight="80.0" prefWidth="600.0" vgap="10.0">
+                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Televisión" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <ComboBox fx:id="btnServicioTV" minHeight="40.0" onAction="#obtenerServicioTV" prefWidth="150.0" promptText="Servicio Televisión" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <HBox.margin>
+                            <Insets left="24.0" right="24.0" />
+                        </HBox.margin></ComboBox>
+                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Internet" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <ComboBox fx:id="btnServicioInternet" minHeight="40.0" onAction="#obtenerServicioInternet" prefWidth="150.0" promptText="Servicio Internet" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <HBox.margin>
+                            <Insets left="24.0" right="24.0" />
+                        </HBox.margin></ComboBox>
+                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Telefonía" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                    <ComboBox fx:id="btnServicioTelefonia" minHeight="40.0" onAction="#obtenerServicioTelefonia" prefWidth="150.0" promptText="Servicio Telefonía" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <HBox.margin>
+                            <Insets left="24.0" right="24.0" />
+                        </HBox.margin></ComboBox>
+                    <Button minHeight="30.0" minWidth="104.0" onAction="#CrearPlan" style="-fx-background-color: #373f51; -fx-text-fill: white" text="Crear Plan" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                        <HBox.margin>
+                            <Insets left="8.0" />
+                        </HBox.margin>
+                        <padding>
+                            <Insets left="8.0" right="8.0" />
+                        </padding></Button>
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+                </GridPane>
+            </HBox>
             <HBox.margin>
             <Insets bottom="32.0" right="32.0" top="32.0" />
          </HBox.margin>
