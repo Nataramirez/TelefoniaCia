@@ -1,5 +1,6 @@
 package co.edu.Telefonia.controlador;
 
+
 import co.edu.Telefonia.modelos.*;
 import co.edu.Telefonia.modelos.enums.TipoPantalla;
 import javafx.collections.FXCollections;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
-public class InicioControlador implements Initializable {
+public class InicioControlador implements Initializable{
     private final ControladorPrincipal controladorPrincipal;
     @FXML
     public TextField nombreCliente;
@@ -49,6 +50,7 @@ public class InicioControlador implements Initializable {
     ServicioTv servicioTVPlan;
     ServicioInternet servicioInternetPlan;
     ServicioTelefonia servicioTelefoniaPlan;
+
 
     public InicioControlador() {
         controladorPrincipal = ControladorPrincipal.getInstancia();
@@ -249,5 +251,4 @@ public class InicioControlador implements Initializable {
             controladorPrincipal.mostrarAlerta("Lo sentimos, no se ha podido generar el reporte mensual.", Alert.AlertType.ERROR);
         }
     }
-
 }

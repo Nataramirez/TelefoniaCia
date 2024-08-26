@@ -162,13 +162,19 @@ public class TelefoniaCia implements ServiciosEmpresa {
         try {
             switch (tipoServicio) {
                 case SERVICIO_TV -> {
-                    return new ServicioTv( UUID.randomUUID().toString(), nombre, descripcion, precio);
+                    ServicioTv servicio = new ServicioTv( UUID.randomUUID().toString(), nombre.toUpperCase(), descripcion, precio);
+                    serviciosTv.add(servicio);
+                    return servicio;
                 }
                 case SERVICIO_TELEFONIA -> {
-                    return new ServicioTelefonia( UUID.randomUUID().toString(), nombre, descripcion, precio);
+                    ServicioTelefonia servicio = new ServicioTelefonia( UUID.randomUUID().toString(), nombre.toUpperCase(), descripcion, precio);
+                    serviciosTelefonia.add(servicio);
+                    return servicio;
                 }
                 case SERVICIO_INTERNET -> {
-                    return new ServicioInternet( UUID.randomUUID().toString(), nombre, descripcion, precio);
+                    ServicioInternet servicio = new ServicioInternet( UUID.randomUUID().toString(), nombre, descripcion, precio);
+                    serviciosInternet.add(servicio);
+                    return servicio;
                 }
                 default -> throw new Exception("No se puede crear el servicio");
             }

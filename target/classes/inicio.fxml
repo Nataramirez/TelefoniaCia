@@ -22,7 +22,7 @@
             <Insets left="10.0" />
          </HBox.margin>
       </Button>
-      <Button id="btnBuscarCliente" layoutX="304.0" layoutY="10.0" minHeight="30.0" minWidth="104.0" onAction="#crearServicio" style="-fx-background-color: #373f51; -fx-text-fill: white;" text="Crear servicio">
+      <Button id="btnBuscarCliente" layoutX="304.0" layoutY="10.0" minHeight="30.0" minWidth="104.0" onAction="#crearServicio" style="-fx-background-color: #373f51; -fx-text-fill: white;" text="Crear y ver servicios">
          <padding>
             <Insets left="8.0" right="8.0" />
          </padding>
