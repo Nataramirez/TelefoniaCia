@@ -8,6 +8,7 @@ import lombok.*;
 import co.edu.Telefonia.servicios.ServiciosEmpresa;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -30,8 +31,52 @@ public class TelefoniaCia implements ServiciosEmpresa {
         serviciosTv = new ArrayList<>();
         facturas = new ArrayList<>();
         serviciosIniciales();
+        inicializarDatos();
         System.out.println(serviciosTv.get(0).getId());
         System.out.println(serviciosInternet.get(0));
+    }
+
+    private void inicializarDatos() {
+        try {
+            Cliente cliente1 = crearCliente("Carlos Mendoza", "111", "555-0001", "carlos.mendoza@example.com");
+            Cliente cliente2 = crearCliente("Laura Fernández", "222", "555-0002", "laura.fernandez@example.com");
+            clientes.add(cliente1);
+            clientes.add(cliente2);
+            Servicio servicioInternet1 = crearServicio("Internet Básico", "Velocidad estándar", 30.0f, TipoServicio.SERVICIO_INTERNET);
+            Servicio servicioInternet2 = crearServicio("Internet Premium", "Velocidad alta", 60.0f, TipoServicio.SERVICIO_INTERNET);
+            Servicio servicioTelefonia1 = crearServicio("Telefonía Básica", "Llamadas nacionales", 20.0f, TipoServicio.SERVICIO_TELEFONIA);
+            Servicio servicioTelefonia2 = crearServicio("Telefonía Premium", "Llamadas internacionales", 50.0f, TipoServicio.SERVICIO_TELEFONIA);
+            Servicio servicioTv1 = crearServicio("TV Básico", "Canales estándar", 25.0f, TipoServicio.SERVICIO_TV);
+            Servicio servicioTv2 = crearServicio("TV Premium", "Canales HD y más", 45.0f, TipoServicio.SERVICIO_TV);
+            Plan plan1 = crearPlan("111", "Av. Siempre Viva 123", (ServicioTelefonia) servicioTelefonia1, (ServicioTv) servicioTv1, (ServicioInternet) servicioInternet1);
+            Plan plan2 = crearPlan("222", "Calle Falsa 456", (ServicioTelefonia) servicioTelefonia2, (ServicioTv) servicioTv2, (ServicioInternet) servicioInternet2);
+
+            // Agregar planes a los clientes
+            cliente1.agregarNuevoPlan(plan1);
+            cliente2.agregarNuevoPlan(plan2);
+
+            LocalDate fecha = LocalDate.of(2024, Month.JULY, 12);
+            LocalDate fecha2 = LocalDate.of(2024, Month.JULY, 30);
+
+            Factura factura = Factura.builder()
+                    .id(UUID.randomUUID().toString())
+                    .costoTotal(calcularCostoTotalMensual(plan1))
+                    .plan(plan1)
+                    .fecha(fecha)
+                    .build();
+
+            Factura factura2 = Factura.builder()
+                    .id(UUID.randomUUID().toString())
+                    .costoTotal(calcularCostoTotalMensual(plan2))
+                    .plan(plan2)
+                    .fecha(fecha2)
+                    .build();
+
+            facturas.add(factura);
+            facturas.add(factura2);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void serviciosIniciales(){
