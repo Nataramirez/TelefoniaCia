@@ -128,4 +128,13 @@ public class InicioControlador {
         }
     }
 
+    @FXML
+    private void crearServicio(){
+        try {
+            controladorPrincipal.navegarVentana(TipoPantalla.CREAR_SERVICIO.getRuta(), TipoPantalla.CREAR_SERVICIO.getNombre());
+        }catch(Exception e){
+            controladorPrincipal.mostrarAlerta("Lo sentimos, no se ha podido generar el reporte mensual.", Alert.AlertType.ERROR);
+        }
+    }
+
 }

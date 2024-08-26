@@ -8,6 +8,7 @@ import lombok.Getter;
 public enum TipoPantalla {
     INICIO("/inicio.fxml", "TelefoniaCia Inicio"),
     VISUALIZACION_CLIENTE("/vistaCliente.fxml", "TelefonoaCia | Visualizaion Cliente"),
+    CREAR_SERVICIO("/crearServicio.fxml", "TelefonoaCia | Creacion de servicios"),
     REPORTE_MENSUAL("/reporteMensual.fxml","TelefonoaCia | Reporte Mensual");
 
     private String ruta;

@@ -3,6 +3,7 @@ co\edu\Telefonia\controlador\ControladorPrincipal.class
 co\edu\Telefonia\app\TelefoniaCiaApp.class
 co\edu\Telefonia\Main.class
 co\edu\Telefonia\modelos\Plan.class
+co\edu\Telefonia\controlador\CrearServicioControlador.class
 co\edu\Telefonia\modelos\Factura.class
 co\edu\Telefonia\modelos\enums\TipoServicioTelefonia.class
 co\edu\Telefonia\modelos\Sesion.class
