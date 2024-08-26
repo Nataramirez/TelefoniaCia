@@ -1,22 +1,18 @@
 package co.edu.Telefonia.controlador;
 
-import co.edu.Telefonia.modelos.Cliente;
-import co.edu.Telefonia.modelos.Servicio;
-import co.edu.Telefonia.modelos.ServicioTv;
-import co.edu.Telefonia.modelos.Sesion;
+import co.edu.Telefonia.modelos.*;
 import co.edu.Telefonia.modelos.enums.TipoPantalla;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 public class InicioControlador implements Initializable {
     private final ControladorPrincipal controladorPrincipal;
@@ -48,6 +44,9 @@ public class InicioControlador implements Initializable {
     public ComboBox btnServicioTelefonia;
 
     Cliente clienteNuevoPlan;
+    ServicioTv servicioTVPlan;
+    ServicioInternet servicioInternetPlan;
+    ServicioTelefonia servicioTelefoniaPlan;
 
     public InicioControlador() {
         controladorPrincipal = ControladorPrincipal.getInstancia();
@@ -80,6 +79,7 @@ public class InicioControlador implements Initializable {
                             "El cliente fue creado con exito.",
                             Alert.AlertType.INFORMATION
                     );
+                    System.out.println(controladorPrincipal.getTelefoniaCia().getClientes());
                 } else {
                     controladorPrincipal.mostrarAlerta("El cliente que desea crear ya existe",
                             Alert.AlertType.INFORMATION);
@@ -136,7 +136,7 @@ public class InicioControlador implements Initializable {
 
     private Cliente buscarCliente(String cedula){
         try{
-            return controladorPrincipal.buscarCliente(buscarCedula.getText());
+            return controladorPrincipal.buscarCliente(cedula);
         }catch (Exception e){
             return null;
         }
@@ -182,17 +182,57 @@ public class InicioControlador implements Initializable {
         return nombresServicio;
     }
 
-    public void obtenerServicioTV(ActionEvent actionEvent) {
+    public void obtenerServicioTV() {
+        System.out.println(btnServicioTV.getValue());
+        for (Servicio servicioTV: controladorPrincipal.getTelefoniaCia().getServiciosTv()){
+            if(servicioTV.getNombre().equals(btnServicioTV.getValue())){
+                servicioTVPlan = new ServicioTv(UUID.randomUUID().toString(), servicioTV.getNombre(), servicioTV.getDescripcion(), servicioTV.getPrecio());
+            }
+        }
     }
 
-    public void obtenerServicioInternet(ActionEvent actionEvent) {
+    public void obtenerServicioInternet() {
+        for (Servicio servicioInternet: controladorPrincipal.getTelefoniaCia().getServiciosInternet()){
+            if(servicioInternet.getNombre().equals(btnServicioInternet.getValue())){
+                servicioInternetPlan = new ServicioInternet(UUID.randomUUID().toString(), servicioInternet.getNombre(), servicioInternet.getDescripcion(), servicioInternet.getPrecio());
+            }
+        }
     }
 
-    public void obtenerServicioTelefonia(ActionEvent actionEvent) {
+    public void obtenerServicioTelefonia() {
+        for (Servicio servicioTelefonia: controladorPrincipal.getTelefoniaCia().getServiciosTelefonia()){
+            if(servicioTelefonia.getNombre().equals(btnServicioTelefonia.getValue())){
+                servicioTelefoniaPlan = new ServicioTelefonia(UUID.randomUUID().toString(), servicioTelefonia.getNombre(), servicioTelefonia.getDescripcion(), servicioTelefonia.getPrecio());
+            }
+        }
     }
 
-    public void CrearPlan(ActionEvent actionEvent) {
+    public void CrearPlan() {
+        try{
+            if(direccionNuevoPlan.getText().isBlank() || direccionNuevoPlan.getText().isEmpty()){
+                controladorPrincipal.mostrarAlerta("La dirección es requerida para la creación del plan", Alert.AlertType.WARNING);
+            } else if (clienteNuevoPlan == null) {
+                controladorPrincipal.mostrarAlerta("El cliente es requerido para la creación del plan", Alert.AlertType.WARNING);
+            } else if (servicioTelefoniaPlan == null && servicioInternetPlan == null && servicioTVPlan == null) {
+                controladorPrincipal.mostrarAlerta("Debe elegir al menos un tipo de servicio para la creación del plan", Alert.AlertType.WARNING);
+            }else {
+                Plan nuevoPlan = controladorPrincipal.crearPlan(cedulaNuevoPlan.getText(), direccionNuevoPlan.getText(), servicioTelefoniaPlan, servicioTVPlan, servicioInternetPlan);
+                if(nuevoPlan != null){
+                    controladorPrincipal.mostrarAlerta("Plan creado correctamente", Alert.AlertType.INFORMATION);
+                    direccionNuevoPlan.clear();
+                    cedulaNuevoPlan.clear();
+                    nombreClientePlan.clear();
+                    telefonoClientePlan.clear();
+                    correoClientePlan.clear();
+                }
+
+            }
+        }catch(Exception e){
+            controladorPrincipal.mostrarAlerta("Lo sentimos, no ha sido posible crear el plan.", Alert.AlertType.ERROR);
+        }
+
     }
+
     @FXML
     private void crearServicio(){
         try {
