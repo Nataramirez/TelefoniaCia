@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.Telefonia.controlador.CrearServicioControlador">
    <children>
       <Label text="Creacion de servicio">
          <font>
@@ -17,12 +17,12 @@
       </Label>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="600.0" style="-fx-spacing: 20;">
          <children>
-            <TextField prefHeight="26.0" prefWidth="205.0" promptText="Servicio a consultar">
+            <TextField fx:id="idServicio" prefHeight="26.0" prefWidth="205.0" promptText="ID del servicio a consultar">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #373f51;" text="Buscar" textFill="WHITE" />
+            <Button mnemonicParsing="false" onAction="#buscarServicio" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #373f51;" text="Buscar" textFill="WHITE" />
          </children>
       </HBox>
       <GridPane alignment="CENTER" hgap="20.0" style="-fx-spacing: 20;">
@@ -68,8 +68,8 @@
       </GridPane>
       <TableView prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn prefWidth="166.59999084472656" text="ID" />
-          <TableColumn prefWidth="243.20001220703125" text="Descripcion" />
+          <TableColumn prefWidth="203.20001602172852" text="ID" />
+          <TableColumn prefWidth="207.99998474121094" text="Descripcion" />
             <TableColumn prefWidth="163.20001220703125" text="Precio" />
             <TableColumn prefWidth="136.80001831054688" text="Tipo" />
         </columns>

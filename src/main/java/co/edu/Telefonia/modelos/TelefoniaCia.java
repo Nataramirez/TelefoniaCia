@@ -30,6 +30,8 @@ public class TelefoniaCia implements ServiciosEmpresa {
         serviciosTv = new ArrayList<>();
         facturas = new ArrayList<>();
         serviciosIniciales();
+        System.out.println(serviciosTv.get(0).getId());
+        System.out.println(serviciosInternet.get(0));
     }
 
     private void serviciosIniciales(){
@@ -375,6 +377,51 @@ public class TelefoniaCia implements ServiciosEmpresa {
             throw new Exception("No se pudo generar el reporte mensual de facturas", e);
         }
     }
+
+    @Override
+    public Servicio buscarServicio(String idServicio) throws Exception {
+        try {
+            for (Servicio servicio : serviciosInternet) {
+                if (servicio.getId().equals(idServicio)) {
+                    return servicio;
+                }
+            }
+
+            for (Servicio servicio : serviciosTelefonia) {
+                if (servicio.getId().equals(idServicio)) {
+                    return servicio;
+                }
+            }
+
+            for (Servicio servicio : serviciosTv) {
+                if (servicio.getId().equals(idServicio)) {
+                    return servicio;
+                }
+            }
+
+            return null;
+        } catch (Exception e) {
+            throw new Exception("No se pudo buscar el servicio", e);
+        }
+    }
+
+    @Override
+    public Servicio actualizarServicio(Servicio servicio, String nombre, String descripcion, Float precio) throws Exception {
+        try {
+            if (servicio != null) {
+                servicio.setNombre(escogerPrimeroNoNulo(nombre, servicio.getNombre()));
+                servicio.setDescripcion(escogerPrimeroNoNulo(descripcion, servicio.getDescripcion()));
+                servicio.setPrecio(precio != null ? precio : servicio.getPrecio());
+            } else {
+                throw new Exception("Se debe enviar un servicio");
+            }
+
+            return servicio;
+        } catch (Exception e) {
+            throw new Exception("No se pudo actualizar el servicio", e);
+        }
+    }
+
 
 
     @Override

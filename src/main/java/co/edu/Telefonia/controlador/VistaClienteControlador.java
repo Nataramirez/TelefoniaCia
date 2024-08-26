@@ -53,11 +53,7 @@ public class VistaClienteControlador implements Initializable {
         cliente = controladorPrincipal.getSesion().getCliente();
 
         if (cliente != null) {
-            nombreCliente.setText(cliente.getNombre());
-            cedulaCliente.setText(cliente.getCedula());
-            telefonoCliente.setText(cliente.getTelefono());
-            correoCliente.setText(cliente.getCorreo());
-
+            llenarDatos();
             llenarTabla();
         } else {
             controladorPrincipal.mostrarAlerta("No se encontró información del cliente.", Alert.AlertType.WARNING);
@@ -67,6 +63,13 @@ public class VistaClienteControlador implements Initializable {
             Stage stage = (Stage) nombreCliente.getScene().getWindow();
             setStage(stage);
         });
+    }
+
+    private void llenarDatos(){
+        nombreCliente.setText(cliente.getNombre());
+        cedulaCliente.setText(cliente.getCedula());
+        telefonoCliente.setText(cliente.getTelefono());
+        correoCliente.setText(cliente.getCorreo());
     }
 
     public void setStage(Stage stage) {
@@ -100,6 +103,7 @@ public class VistaClienteControlador implements Initializable {
             if (validarCamposNumericos()) {
                 controladorPrincipal.actuallizarCliente(nombre, telefono, correo, cedulaActual, cedula);
                 controladorPrincipal.mostrarAlerta("Cliente actualizado de manera exitosa", Alert.AlertType.INFORMATION);
+                llenarDatos();
             } else {
                 controladorPrincipal.mostrarAlerta("Asegurate de que los campos cedula y telefono sean numericos", Alert.AlertType.WARNING);
             }

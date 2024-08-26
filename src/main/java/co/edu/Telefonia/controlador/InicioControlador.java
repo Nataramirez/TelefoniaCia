@@ -80,6 +80,11 @@ public class InicioControlador implements Initializable {
                             "El cliente fue creado con exito.",
                             Alert.AlertType.INFORMATION
                     );
+
+                    nombreCliente.clear();
+                    cedulaCliente.clear();
+                    telefonoCliente.clear();
+                    correoCliente.clear();
                 } else {
                     controladorPrincipal.mostrarAlerta("El cliente que desea crear ya existe",
                             Alert.AlertType.INFORMATION);
@@ -126,6 +131,7 @@ public class InicioControlador implements Initializable {
                     Sesion sesion = controladorPrincipal.getSesion();
                     sesion.setCliente(cliente);
                     controladorPrincipal.navegarVentana(TipoPantalla.VISUALIZACION_CLIENTE.getRuta(), TipoPantalla.VISUALIZACION_CLIENTE.getNombre());
+                    buscarCedula.clear();
                 }
             } catch (NumberFormatException e){
                 controladorPrincipal.mostrarAlerta("Ingresa sólo números para buscar cliente.",
