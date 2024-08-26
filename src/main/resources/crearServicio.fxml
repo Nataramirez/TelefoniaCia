@@ -38,14 +38,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ComboBox prefHeight="26.0" prefWidth="130.0" promptText="Tipo servicio" GridPane.rowIndex="1" />
-            <TextField prefHeight="26.0" prefWidth="130.0" promptText="Nombre servicio" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ComboBox fx:id="tipoServicio" prefHeight="26.0" prefWidth="130.0" promptText="Tipo servicio" GridPane.rowIndex="1" />
+            <TextField fx:id="nombreServicio" prefHeight="26.0" prefWidth="130.0" promptText="Nombre servicio" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <VBox.margin>
                   <Insets left="5.0" right="5.0" />
                </VBox.margin></TextField>
-            <TextField promptText="Precio servicio" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField prefHeight="26.0" prefWidth="123.0" promptText="Descripcion servico" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #373f51;" text="Crear" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <TextField fx:id="precioServicio" promptText="Precio servicio" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="descripcionServicio" prefHeight="26.0" prefWidth="123.0" promptText="Descripcion servico" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button onAction="#crearServicio" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #373f51;" text="Crear" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="18.0" prefWidth="125.0" text="Nombre" GridPane.columnIndex="1">
                <font>
                   <Font size="13.0" />
