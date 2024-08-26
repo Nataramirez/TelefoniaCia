@@ -3,9 +3,11 @@ package co.edu.Telefonia.controlador;
 import co.edu.Telefonia.modelos.*;
 import co.edu.Telefonia.modelos.enums.TipoPantalla;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -79,6 +81,11 @@ public class InicioControlador implements Initializable {
                             "El cliente fue creado con exito.",
                             Alert.AlertType.INFORMATION
                     );
+
+                    nombreCliente.clear();
+                    cedulaCliente.clear();
+                    telefonoCliente.clear();
+                    correoCliente.clear();
                     System.out.println(controladorPrincipal.getTelefoniaCia().getClientes());
                 } else {
                     controladorPrincipal.mostrarAlerta("El cliente que desea crear ya existe",
@@ -126,6 +133,7 @@ public class InicioControlador implements Initializable {
                     Sesion sesion = controladorPrincipal.getSesion();
                     sesion.setCliente(cliente);
                     controladorPrincipal.navegarVentana(TipoPantalla.VISUALIZACION_CLIENTE.getRuta(), TipoPantalla.VISUALIZACION_CLIENTE.getNombre());
+                    buscarCedula.clear();
                 }
             } catch (NumberFormatException e){
                 controladorPrincipal.mostrarAlerta("Ingresa sólo números para buscar cliente.",

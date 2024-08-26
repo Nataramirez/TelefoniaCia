@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="379.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.Telefonia.controlador.ConsultarServicioControlador">
+   <children>
+      <Label text="Consulta de servicio">
+         <font>
+            <Font size="22.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="315.0" prefWidth="379.0">
+         <children>
+            <GridPane alignment="CENTER" prefHeight="242.0" prefWidth="196.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.99999237060547" minWidth="10.0" prefWidth="210.99999237060547" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="30.4" minHeight="10.0" prefHeight="22.4" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="48.4" minHeight="10.0" prefHeight="41.79999999999999" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="31.39999999999999" minHeight="10.0" prefHeight="22.39999999999999" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="52.400000000000006" minHeight="10.0" prefHeight="45.400000000000006" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="33.400000000000006" minHeight="10.0" prefHeight="26.599999999999994" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="58.400000000000006" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="41.20000000000002" minHeight="10.0" prefHeight="27.599999999999994" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="82.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="223.0" text="Identificador">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="224.0" text="Nombre" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label alignment="CENTER" prefHeight="6.0" prefWidth="197.0" text="Descripcion" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="328.0" text="Precio" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <TextField fx:id="precio" promptText="Precio del servicio" GridPane.rowIndex="5" />
+                  <TextField fx:id="id" promptText="Identificador del servicio" GridPane.rowIndex="1" editable="false"/>
+                  <TextField fx:id="nombre" prefHeight="26.0" prefWidth="214.0" promptText="Nombre del servicio" GridPane.rowIndex="3" />
+                  <TextArea fx:id="descripcion" prefHeight="54.0" prefWidth="211.0" promptText="Descripcion del servicio" GridPane.rowIndex="7" />
+               </children>
+            </GridPane>
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <Button mnemonicParsing="false" onAction="#actualizar" prefHeight="36.0" prefWidth="119.0" style="-fx-background-color: #373f51;" text="Actualizar " textFill="WHITE" />
+   </children>
+</VBox>

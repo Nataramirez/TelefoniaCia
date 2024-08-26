@@ -163,4 +163,14 @@ public class ControladorPrincipal implements ServiciosEmpresa {
     public ArrayList<Factura> generarReporteMensual() throws Exception {
         return telefoniaCia.generarReporteMensual();
     }
+
+    @Override
+    public Servicio buscarServicio(String idServicio) throws Exception {
+        return telefoniaCia.buscarServicio(idServicio);
+    }
+
+    @Override
+    public Servicio actualizarServicio(Servicio servicio, String nombre, String descripcion, Float precio) throws Exception {
+        return telefoniaCia.actualizarServicio(servicio, nombre, descripcion, precio);
+    }
 }

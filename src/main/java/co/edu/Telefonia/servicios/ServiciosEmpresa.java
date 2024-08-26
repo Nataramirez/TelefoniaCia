@@ -31,4 +31,6 @@ public interface ServiciosEmpresa {
     void enviarFacturas() throws Exception;
 
     ArrayList<Factura> generarReporteMensual() throws Exception;
+    Servicio buscarServicio(String idServicio) throws Exception;
+    Servicio actualizarServicio(Servicio servicio, String nombre, String descripcion, Float precio) throws Exception;
 }
